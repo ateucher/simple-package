@@ -30,6 +30,11 @@ jobs:
 
       - uses: r-lib/actions/setup-tinytex@master
 
+      - name: Install TeX pkgs
+        run: |
+          tlmgr update --self
+          tlmgr install bitset
+
       - name: Install dependencies
         run: Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
 
